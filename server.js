@@ -8,7 +8,7 @@ const {
     GraphQLNonNull,
     GraphQLInt
 } = require('graphql');
-
+const app = express();
 
 
 const authors = [
@@ -28,7 +28,7 @@ const books = [
     { id: 8, name: 'Beyond the Shadows', authorId: 3 }
 ]
 
-const app = express();
+
 
 
 
@@ -77,7 +77,7 @@ const RootQueryType = new GraphQLObjectType({
             resolve: (parent, args) => books.find(book => book.id === args.id)
         },
 
-        books: {
+        books: { 
             type: new GraphQLList(BookType),
             description: 'List of All Books',
             resolve: () => books
